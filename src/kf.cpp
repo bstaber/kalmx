@@ -2,23 +2,23 @@
 
 namespace kalmx {
 
-static void check_dims(const KFConfig &c) {
-    if (c.A.rows() != c.A.cols())
+static void check_dims(const KFConfig &config) {
+    if (config.A.rows() != config.A.cols())
         throw std::invalid_argument("A must be square");
-    const auto n = c.A.rows();
-    if (c.B.rows() != n)
-        throw std::invalid_argument("B rows != n");
-    if (c.H.cols() != n)
-        throw std::invalid_argument("H cols != n");
-    if (c.Q.rows() != n || c.Q.cols() != n)
-        throw std::invalid_argument("Q must be n x n");
-    if (c.P0.rows() != n || c.P0.cols() != n)
-        throw std::invalid_argument("P0 must be n x n");
-    if (c.x0.size() != n)
-        throw std::invalid_argument("x0 size != n");
-    if (c.R.rows() != c.R.cols())
+    const auto n_rows = config.A.rows();
+    if (config.B.rows() != n_rows)
+        throw std::invalid_argument("B rows != A rows");
+    if (config.H.cols() != n_rows)
+        throw std::invalid_argument("H cols != A rows");
+    if (config.Q.rows() != n_rows || config.Q.cols() != n_rows)
+        throw std::invalid_argument("Q must be A_rows x A_rows");
+    if (config.P0.rows() != n_rows || config.P0.cols() != n_rows)
+        throw std::invalid_argument("P0 must be A_rows x A_rows");
+    if (config.x0.size() != n_rows)
+        throw std::invalid_argument("x0 size != Açrows");
+    if (config.R.rows() != config.R.cols())
         throw std::invalid_argument("R must be square");
-    if (c.H.rows() != c.R.rows())
+    if (config.H.rows() != config.R.rows())
         throw std::invalid_argument("H rows must equal R size");
 }
 
