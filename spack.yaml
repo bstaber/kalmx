@@ -1,0 +1,12 @@
+spack:
+  concretizer:
+    unify: true
+  view: true  # all deps visible in a common prefix
+  specs:
+    - eigen
+    - py-pybind11
+  packages:
+    all:
+      target: [x86_64]
+  config:
+    install_tree: $spack/opt/spack
