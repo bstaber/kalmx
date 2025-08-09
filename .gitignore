@@ -7,3 +7,4 @@ __pycache__/
 /.idea/
 .spack-env/
 cmake/
+book/book
