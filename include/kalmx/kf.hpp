@@ -12,8 +12,11 @@ struct KFConfig {
 };
 
 struct StepStats {
-    Eigen::VectorXd innovation;
-    Eigen::MatrixXd S;
+  Eigen::VectorXd innovation;
+  Eigen::MatrixXd S;
+  
+  StepStats(Eigen::VectorXd innovation_, Eigen::MatrixXd state_)
+    : innovation(std::move(innovation_)), S(std::move(state_)) {}
 };
 
 class KalmanFilter {
